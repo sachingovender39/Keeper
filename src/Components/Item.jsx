@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
 
-function Item(props){
-    const title =props.title;
-    const details = props.content
-    return <div className='note'>
-        <h1>{title}</h1>
-        <p>{details}</p>
-    </div>
+function Item(props) {
+  const [state, changeState] = React.useState(false);
+  function toggleState() {
+    changeState((prevVal) => !prevVal);
+  }
+  return (
+    <li
+      onClick={toggleState}
+      style={{ textDecoration: state ? "line-through" : "none" }}
+    >
+      {props.name}
+    </li>
+  );
 }
+
 export default Item;
